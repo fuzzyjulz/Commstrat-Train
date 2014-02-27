@@ -1,0 +1,42 @@
+READ ME FILE
+
+Project Assumptions
+ - Routes have a single character for the station specified in the file. This may be any character including word characters 
+    or special characters, apart from whitespace characters
+    
+ - Distances are specified in a single digit and floating points are not allowed.
+ 
+ - From the data provided it is possible for counts to follow the same route, even though in reality this would probably not be a
+    sensible assumption.
+ 
+ - The questions are in a fairly generic format, this shows that most likely in future more questions may be added. They are also
+    written in a fairly easily understandable way in the problem. So the solution was designed with flexability in mind, so that it
+    may at some point be revised into a human readable format similar to a cucumber test
+
+ - The text in the problem definition "For the test input, the towns are named using the first few letters of the alphabet from A to D" does not
+    specify that they must be validated in this way
+    
+ - There are no identical routes in terms of the start and end station. If this were the case then the direct method would need to return
+  	a list instead of a single route, and some of the outputs would return multiple results potentially.
+
+ - Although Actions and Constraints appear quite similar, the decision was made to keep them seperate intentionally as they don't share the same
+    logical grouping. If this project were to become more complex, it would most likely become very confsing if they were to extend a similar 
+    base class
+    
+ - The two route processors don't have their own test classes as they are tested fully with the question processor tests
+
+Ways to improve the algorithms
+ - Currently the algorithms use depth first until they get constrained, in a real solution, this would probably want to be a bredth first 
+    solution, but to keep it simple depth was used. In order to implement bredth first a stack would have to be used.
+    
+ - In a real solution to this problem each station would most likely have GPS coordinates, and this would probably be the easiest way to
+    identify good routes from bad ones. Most likely if searches were performed they would want to be based on time, and include multiple 
+    forms of transport. This would be fairly easy to implement with the given solution.
+    
+ - Currently it is possible to ask certain questions that would cause an almost infinite loop, such as looking for stations for millions of stops
+    The algorithms could be limited to prevent this kind of malicious attack
+    
+ - Constraints and actions are currently a single object as this is all that is required by the algorithm currently but this could be easily expanded
+    to work with lists so that multiple actions could happen when a route is determined such as performing a function on it, or retrieving more data
+    from the algorithm such as the exact route(s) taken.
+    
